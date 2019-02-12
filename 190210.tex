@@ -1,0 +1,88 @@
+\documentclass[11pt,a4paper]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
+\lstset{%mactex
+ language={C++},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%
+ lineskip=-0.5ex%
+}
+\lstset{%mactex
+ language={R},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%
+ lineskip=-0.5ex%
+}
+\lstset{%mactex
+ language={Python},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%1
+ lineskip=-0.5ex%
+}
+\begin{document}
+
+\title{1章}
+\date{\today}
+\maketitle
+%-----------------------------------------------------------------------------------------------------
+\subsection{1.2.6　ベイズ曲線フィッティング}
+$p(t|x, \textbf{x}, \textbf{w})p(\textbf{w}|\textbf{x}\textbf{t})d\textbf{w}$
+\subsection{モデル選択}
+新たなデータに対して最も良い予測をするモデルを選択したい.
+
+\end{document}
+確認用集合で色々なモデルを学習. \\
+-> テスト集合でモデルの性能を評価\\
+\subsection{次元の呪い}
+次元が高次になる\\
+->直感的理解が困難になり、扱い辛くなる。 

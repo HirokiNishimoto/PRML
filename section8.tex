@@ -1,0 +1,114 @@
+\documentclass[11pt,a4paper]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
+\lstset{%mactex
+ language={C++},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%
+ lineskip=-0.5ex%
+}
+\lstset{%mactex
+ language={R},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%
+ lineskip=-0.5ex%
+}
+\lstset{%mactex
+ language={Python},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%1
+ lineskip=-0.5ex%
+}
+\begin{document}
+
+\title{PRML輪読会 第4回 資料 \\
+        グラフィカルモデル}
+\author{氏 名： 西本　洋紀 \\
+        教養学部学際科学科B群 2年
+        }
+\date{\today}
+\maketitle
+%-----------------------------------------------------------------------------------------------------
+\section*{0 ~ 全体像}
+「確率的グラフィカルモデル」とは...\\
+確率分布の図式的な表現.\\
+グラフィカルモデルは以下のような便利な特徴を持っている.
+\begin{enumerate}
+  \item 確率モデルの構造を視覚化する簡単な方法を提供し、新しいモデルの設計方法を決めるのに役立つ.
+  \item グラフの構造を調べることにより、条件付き独立性などのモデルの性質に関する知見が得られる.
+  \item モデルの推論や学習に伴う複雑な計算を、数学的な表現を暗に伴うグラフ上の操作として表現できる.
+\end{enumerate}
+\begin{itemize}
+  \item 有向グラフベイジアンネットワーク
+  \begin{itemize}
+    \item 2 条件付き独立性
+  \end{itemize}
+  \item 3 マルコフ確率場
+  \\
+  \item 4 グラフィカルモデルにおける推論
+\end{itemize}
+\section{ベイジアンネットワーク}
+\begin{itemize}
+  \item グラフのリンクが特定の方向性を持ち矢印で描かれる
+  \item 全結合　リンクが存在しないことを持ってグラフで分布の情報を表現。
+  \item ここでは、有向閉路を持たないグラフ （有向非循環グラフ）を考えている。
+\end{itemize}
+\subsection{例:多項式曲線フィッティング}
+\subsection{生成モデル}
+\subsection{離散変数}
+\subsection{線形ガウスモデル}
+\section{条件付き独立性}
+\section{マルコフ確率場}
+リンクが方向性を持たない。
+\section{グラフィカルモデルにおける推論}
+\end{document}
