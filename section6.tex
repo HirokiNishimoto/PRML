@@ -130,10 +130,19 @@ $双対表現に変換すると, パラメータベクトル\textbf{a}を求め�
   \begin{enumerate}
     \item 生成モデル$p(\textbf{x})が与えられた時に,~k(\textbf{x},\textbf{x}')=p(\textbf{x})p(\textbf{x}')$によりカーネル関数を定義する方法
     \item フィッシャーカーネル
-
   \end{enumerate}
 \end{itemize}
 \section*{6.~3~~~RBFネットワーク}
+\begin{equation}
+  E=\frac{1}{2}\sum_{n=1}^{N}\int\{y(\textbf{x}_n + \xi) - t_n\}^2\nu(\xi)d\xi
+\end{equation}
+\begin{equation}
+  y(\textbf{x})=\sum_{n=1}^N t_nh(\textbf{x}-\textbf{x}_n)
+\end{equation}
+\begin{equation}
+  h(\textbf{x}-\textbf{x}_n)=\frac{\nu(\textbf{x}-\textbf{x}_n)}{\sum_{n=1}^N\nu(\textbf{x}-\textbf{x}_n)}
+\end{equation}
+\subsection{Nadaraya-Watsonモデル}
 
 \section*{6.~4~~~ガウス過程}
 本節では,回帰のための確率的な線形モデルと,~ガウス過程との双対性を示す.
