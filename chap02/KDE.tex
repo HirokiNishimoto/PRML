@@ -1,0 +1,160 @@
+\documentclass[11pt,a4paper]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
+\lstset{%mactex
+ language={C++},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%
+ lineskip=-0.5ex%
+}
+\lstset{%mactex
+ language={R},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%
+ lineskip=-0.5ex%
+}
+\lstset{%mactex
+ language={Python},
+ % backgroundcolor={\color[gray]{.95}},%
+ tabsize=2, % tab space width
+ showstringspaces=false, % don't mark spaces in strings
+ basicstyle={\ttfamily},%
+ %identifierstyle={\small},%
+ commentstyle={\itshape},%
+ keywordstyle={\bfseries},%
+ %ndkeywordstyle={\small},%
+ stringstyle={\ttfamily},
+ %frame={tb},
+ breaklines=true,
+ columns=[l]{fullflexible},%
+ % numbers=left,%
+ % numberstyle={\small},%
+ xrightmargin=0zw,%
+ %xleftmargin=3zw,%
+ stepnumber=1,
+ numbersep=1zw,%1
+ lineskip=-0.5ex%
+}
+\begin{document}
+
+\title{カーネル密度推定法}
+\author{氏 名： 西本　洋紀 }
+\date{\today}
+\maketitle
+%-----------------------------------------------------------------------------------------------------
+\section{目的}
+ある分布$p(\mathbf{x})$に従って、$N$個の観測値が得られたとする。この時、N個の観測値から、分布$p(\mathbf{x})$を推定したい。
+\section{方法}
+$\mathbf{x}$を含むある小さな領域$\mathcal{R}$を考える。この領域に割り当てられた確率$P$は
+\begin{equation}
+  P = \int_\mathcal{R}p(\mathbf{x})d\mathbf{x}
+\end{equation}
+と書ける。\\
+領域
+$\mathcal{R}$
+のデータ点の総数$K$は、二項分布に従う。
+\begin{equation}
+  Bin(K | N, P) = \binom{N}{K} p^K (1 - p)^{N-K}
+\end{equation}
+よって、$\frac{K}{N}$の分布の平均と分散は
+\begin{equation}
+  \mathbf{E}[K/N] = P
+\end{equation}
+\begin{equation}
+  var[K/N] = \frac{P(1 - P)}{N}
+\end{equation}
+となる事がわかる。
+
+$N  \to \infty$ のとき、$\frac{K}{N}$の分布は平均周りで尖った形になり、
+\begin{equation}
+  K \simeq NP
+\end{equation}
+となる。\\
+また、
+$\mathcal{R}$
+が小さく、確率密度$p(\mathbf{x})$がこの領域内で一定とみなせるとしたら、
+\begin{equation}
+  P\simeq p(\mathbf{x})V
+\end{equation}
+となる。ただし、$V$は、$\mathcal{R}$の体積である。
+
+$V$を固定し、$K$をデータから推定できたとすると、
+\begin{equation}
+  p(\mathbf{x}) \simeq \frac{K}{NV}
+\end{equation}
+により、$p(\mathbf{x})$を推定できる。あとは$K$をデータから推定をする部分を考えれば良い。
+
+確率密度を求めたい点を$\mathbf{x}$、この点を中心とする超立方体を$\mathcal{R}$とする。また、観測値の集合を$\{\mathbf{\mathbf{x}_n}\}$とする。
+さらに、カーネル関数
+
+  \begin{eqnarray}
+    k(\mathbf{u})=\left\{  \begin{array}{ll}
+    1 & (\|u_i\| \leq \frac{1}{2}) \\
+    0 & (o.w.) \\
+    \end{array} \right.
+  \end{eqnarray}
+を定義する。
+この方法では、$k(\frac{\mathbf{x} - \mathbf{x_n}}{h})$は$\mathbf{\mathbf{x}}$を中心とする一辺が$h$の立方体$\mathcal{R}$の内部にデータ点があれば1に、そうでなければ０になる。
+
+立方体$\mathcal{R}$内のデータ点の総数は
+\begin{equation}
+  K = \sum_{n=1}^{N} k(\frac{\mathbf{x} - \mathbf{x_n}}{h})
+\end{equation}
+と書け、$\mathbf{\mathbf{x}}$での推定密度は
+\begin{equation}
+  p(\mathbf{x}) = \frac{1}{N}\sum_{n=1}^{N} \frac{1}{h^D} k(\frac{\mathbf{x} - \mathbf{x_n}}{h})
+\end{equation}
+となる。上式の確率密度のクラスは、カーネル密度推定法や\textbf{Parzen 推定法}と呼ばれる。
+
+このとき、立方体の縁で、人為的な不連続が生じてしまう。より滑らかなカーネル関数を使えば、より滑らかな密度が得られる。
+カーネル関数$\k(\mathbf{u})$には、以下の条件を満たす任意の関数を選ぶことができる。
+
+\begin{equation}
+  k(\mathbf{u}) \geq 0
+\end{equation}
+\begin{equation}
+  \int k(\mathbf{u}) d\mathbf{u} = 1
+\end{equation}
+
+一般によく選ばれるカーネル関数はガウスカーネルで、次の確率密度モデルになる。
+
+\begin{equation}
+  p(\mathbf{x}) = \frac{1}{(2\pi h^2)^{D/2}} exp\{-\frac{(\|\mathbf{\mathbf{x}} - \mathbf{x_n\|)^2}}{2h^2}\}
+\end{equation}
+
+ただし、$h$はガウス分布の標準偏差を表す。パラメータ$h$は平滑化パラメータの役割を果たし、$h$が小さすぎると、結果はノイズの多い密度モデルになるが、大きすぎると、データの局所的な性質が捉えにくくなる。最良の密度は、中間的な$h$の値で得られる。
+\end{document}
